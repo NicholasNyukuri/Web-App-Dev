@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="style2.css">
     <script src="scriot.js"></script>
 </head>
-<body onload ="starTime()">
-    
+<body onload="starTime()">
     <script>
-        var name = "Nicholas Nyukuri";
+        var name = "Alex Okama";
+        // calling the function from the external JavaScript file
         document.write(greetings(name));
     </script>
 <p id="dateTime"></p>
@@ -18,7 +18,7 @@
 <script>
     // Indexed array
    var fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry"];
-    document.write("<br>" + fruits[1] + "<br>"); // Output: Banana
+    // document.write("<br>" + fruits[1] + "<br>"); // Output: Banana
 
     // Associative array (using an object in JavaScript)
     var person = {
@@ -82,6 +82,11 @@
             phone: "333-444-5555",
             address: "202 Maple St, Newtown, USA"
         },
+        // Secretary Bio
+        SecretaryBio: function() {
+            return this.Secretary.name.join(" ") + " is the secretary of the company. You can contact him at " + this.Secretary.email["Work Email"] + " or " + this.Secretary.email["Home Email"] + ". Or schedule a meeting at " + this.Secretary.phone + " or visit him at " + this.Secretary.address + ".";
+        },
+
         // functions
         getDirectorEmail: function() {
             return userDetails.Director.email["Work Email"];
@@ -93,6 +98,7 @@
     };
     // Accessing data
     document.write(userDetails.getManagerHomeEmail() + "<br>"); // Output:
+    document.write(userDetails.SecretaryBio() + "<br>");
 
 var kenyanCities = ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika", "Kitale", "Garissa", "Meru", "Machakos"];
 </script>
@@ -116,70 +122,76 @@ var kenyanCities = ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika"
     <option value="Nakuru">Nakuru</option>
     <option value="Eldoret">Eldoret</option>
 </select>
-<script>
-var i = 7;
-while (i > 0) {//condition
-    document.write(i + "<br>");
-    i+=2;
-}
-//do while loop
-var j = 0;
-do {
-    document.write(j + "<br>");
-    j+=3;
-} while(j <= 30);
-//for loop
-for (var k = 0; k <= 20; k+=4) {
-    document.write(k + "<br>");
-}
-//for of loop(for arrays)
-var colors = ["Red", "Green", "Blue", "Yellow", "Purple"];
-for (var color of colors) {
-    document.write(color + "<br>");
-}
-//for in loop(for objects)
-var car = {
-    brand: "Toyota",
-    model: "Camry",
-    year: 2020,
-    color: "Silver"
-};
-for (var carDetails in car) {
-    document.write(carDetails + ": " + car[carDetails] + "<br>");
-}
-</script>
-<select>
-    <option value="">Select Day</option>
-    <script>
-        var daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-        for (var i = 0; i < daysOfWeek.length; i++) {   
-            document.write("<option value='" + daysOfWeek[i] + "'>" + daysOfWeek[i] + "</option>");
-        }
-    </script>
-    
-</select>
-<br>
-<select>
-    <option value="">Select Month</option>
-    <script>
-        var monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        for (var i = 0; i < monthsOfYear.length; i++) {
-            document.write("<option value='" + monthsOfYear[i] + "'>" + monthsOfYear[i] + "</option>");
-        }
-        </script>
-    </select>
-    <select>
-        <option value="">Select Year</option>
-        <script>
-            var currentYear = new Date().getFullYear();
-            var minYear = currentYear - 100; // Assuming a maximum age of 100 years
-            for (var i = currentYear; i >= 1900; i--) {
-                document.write("<option value='" + i + "'>" + i + "</option>");
-            }
-        </script>
-    </select>
+
 <br>
 
-    <p id="time"></p>
+<script>
+    var dateTime = new Date(); // current date and time
+    var hours = dateTime.getHours();
+
+    var weekday = dateTime.getDay(); // output: 0 (Sunday) to 6 (Saturday)
+    // array of weekday indexes
+    // { 0:"Sunday", 1:"Monday", 2:"Tuesday", 3:"Wednesday", 4:"Thursday", 5:"Friday", 6:"Saturday"}
+    var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var weekdayName = weekdays[weekday]; // get the weekday name
+
+    var month = dateTime.getMonth(); // output: 0 (January) to 11 (December)
+    // array of month indexes
+    // { 0:"January", 1:"February", 2:"March", 3:"April", 4:"May", 5:"June", 6:"July", 7:"August", 8:"September", 9:"October", 10:"November", 11:"December"}
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var monthName = months[month]; // get the month name
+
+    document.write("Hours: " + hours);
+    document.write("<br>Weekday: " + weekdayName);
+    document.write("<br>Month: " + monthName);
+// loops
+// While loop
+document.write("<h4>While Loop</h4>");
+var i = 7; // initialization
+while (i <= 15) { // Condition
+    document.write(i + "<br>"); // code to be executed
+    i+=2; // increment by 2
+}
+// do-while loop
+document.write("<h4>Do-While Loop</h4>");
+var j = 10; // initialization
+do {
+    document.write(j + "<br>"); // code to be executed
+    j+=3; // increment by 3
+} while (j <= 30); // Condition
+// for loop
+document.write("<h4>For Loop</h4>");
+for (var k = 1; k <= 10; k++) { // initialization, condition, increment
+    document.write(k + "<br>"); // code to be executed
+}
+// for of loop (for arrays)
+document.write("<h4>For Of Loop</h4>");
+var colors = ["Red", "Green", "Blue", "Yellow", "Purple"];
+for (var color of colors) { // iterating over the colors array
+    if (color === "Yellow") {
+        break; // exit the loop when color is Yellow
+        // continue; // skip the rest of the loop when color is Yellow
+    }
+    document.write(color + "<br>"); // code to be executed
+}
+// for in loop (for objects)
+document.write("<h4>For In Loop</h4>");
+var car = {
+    make: "Toyota",
+    model: "Corolla",
+    year: 2020,
+    color: "Red"
+};
+for (var carDetail in car) { // iterating over the car object
+    document.write(carDetail + ": " + car[carDetail] + "<br>"); // code to be executed
+}
+
+
+</script>
+<br>
+<br>
+<br>
+<br>
+
 </body>
 </html>
